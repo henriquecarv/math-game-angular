@@ -8,14 +8,15 @@ At the beginning of each round a simple math challenge is sent to all connected 
 
 The first player to submit a correct answer gets 1 point for the round and completes the round. All incorrect answers subtract a point from the players' score. Correct late answers do not affect the score. After completing the round all remaining players are informed that the round is over. A new round starts in 5 seconds after the end of last one.
 
+## Running
+
+1. Start the [server](https://github.com/henriquecarv/math-game-socket)
+2. `npm run start`
+
 ## Build
 
-* `npm rum build`
+* `npm run build`
 
 ## Deploying to GitHub Pages
 
 * `npm run publish`
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
