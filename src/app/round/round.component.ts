@@ -16,14 +16,10 @@ export class RoundComponent implements OnInit {
   isValid: boolean;
   correctAnswered: boolean = false;
 
-  operators = {
-    1: "*",
-    2: "+",
-    3: "-",
-    4: "/"
-  };
-
-  constructor(private app: AppComponent, private socketService: SocketService) {}
+  constructor(
+    private app: AppComponent,
+    private socketService: SocketService
+  ) {}
 
   isValidButton(): boolean {
     return this.isValid;
@@ -41,39 +37,41 @@ export class RoundComponent implements OnInit {
     if (answer) {
       if (this.hasSameResults()) {
         this.playerPoints++;
-        console.log(`Correct ${this.playerPoints}`);
         if (!this.correctAnswered) {
-          console.log("Not answered");
-          this.app.setScore(this.playerPoints);
-          this.socketService.socket.emit("answer", true);
+          this.rightAnswer();
         }
       } else {
         if (this.playerPoints > 0) {
           this.playerPoints--;
         }
-        console.log(`Wrong ${this.playerPoints}`);
       }
     } else {
       if (this.hasSameResults()) {
         if (this.playerPoints > 0) {
           this.playerPoints--;
         }
-        console.log(`Wrong ${this.playerPoints}`);
       } else {
         this.playerPoints++;
-        console.log(`Correct ${this.playerPoints}`);
         if (!this.correctAnswered) {
-          console.log("Not answered");
-          this.app.setScore(this.playerPoints);
-          this.socketService.socket.emit("answer", true);
+          this.rightAnswer();
         }
       }
     }
   }
 
+  rightAnswer(): void {
+    this.correctAnswered = true;
+    alert("Congratulations! One Point for you");
+    this.app.setScore(this.playerPoints);
+    this.socketService.socket.emit("answer", true);
+  }
+
   loadNewChallenge(): void {
-    this.isValid = true;
-    this.socketService.socket.emit("new-challenge", {});
+    setTimeout(() => {
+      this.isValid = true;
+      this.correctAnswered = false;
+      this.socketService.socket.emit("new-challenge", {});
+    }, 5000);
   }
 
   ngOnInit() {
@@ -84,11 +82,10 @@ export class RoundComponent implements OnInit {
       this.operator = data.operator;
       this.result = data.result;
     });
-    this.socketService.socket.on("answered", data => {
-      if (data) {
-        setTimeout(() => {
-          this.loadNewChallenge();
-        }, 5000);
+    this.socketService.socket.on("answered", () => {
+      if (!this.correctAnswered) {
+        alert("This round has ended! A new one will start in 5 seconds.");
+        this.loadNewChallenge();
       }
     });
   }
