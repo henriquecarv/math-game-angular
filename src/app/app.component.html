@@ -1,3 +1,4 @@
 <span class="score">Score: {{score}}</span>
 <span class="players">Players: {{connected}}</span>
-<app-round></app-round>
+<app-round [style.display]="!max_users ? 'none' : 'block'"></app-round>
+<app-wait [style.display]="max_users ? 'none' : 'block'"></app-wait>

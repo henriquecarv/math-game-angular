@@ -82,9 +82,12 @@ export class RoundComponent implements OnInit {
       this.operator = data.operator;
       this.result = data.result;
     });
-    this.socketService.socket.on("answered", () => {
+    this.socketService.socket.on("answered", data => {
       if (!this.correctAnswered) {
+        this.isValid = false;
         alert("This round has ended! A new one will start in 5 seconds.");
+      }
+      if (data) {
         this.loadNewChallenge();
       }
     });
