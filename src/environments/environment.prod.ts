@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  socket: "http://math-game.us-east-2.elasticbeanstalk.com/"
 };

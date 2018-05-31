@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import * as io from "socket.io-client";
+import { environment } from "../environments/environment";
 
 @Injectable()
 export class SocketService {
-  private url = "http://math-game.us-east-2.elasticbeanstalk.com/";
+  private url = environment.socket;
   public socket;
 
   constructor() {
