@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { AppComponent } from "../app.component";
-import { SocketService } from "../socket.service";
+import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { SocketService } from '../socket.service';
 
 @Component({
-  selector: "app-round",
-  templateUrl: "./round.component.html",
-  styleUrls: ["./round.component.css"]
+  selector: 'app-round',
+  templateUrl: './round.component.html',
+  styleUrls: ['./round.component.css']
 })
 export class RoundComponent implements OnInit {
   playerPoints = 0;
@@ -14,7 +14,7 @@ export class RoundComponent implements OnInit {
   result: number;
   operator: string;
   isValid: boolean;
-  correctAnswered: boolean = false;
+  correctAnswered = false;
 
   constructor(
     private app: AppComponent,
@@ -61,31 +61,31 @@ export class RoundComponent implements OnInit {
 
   rightAnswer(): void {
     this.correctAnswered = true;
-    alert("Congratulations! One Point for you");
+    alert('Congratulations! One Point for you');
     this.app.setScore(this.playerPoints);
-    this.socketService.socket.emit("answer", true);
+    this.socketService.socket.emit('answer', true);
   }
 
   loadNewChallenge(): void {
     setTimeout(() => {
       this.isValid = true;
       this.correctAnswered = false;
-      this.socketService.socket.emit("new-challenge", {});
+      this.socketService.socket.emit('new-challenge', {});
     }, 5000);
   }
 
   ngOnInit() {
     this.isValid = true;
-    this.socketService.socket.on("challenge", data => {
+    this.socketService.socket.on('challenge', data => {
       this.firstOperand = data.firstOperand;
       this.secondOperand = data.secondOperand;
       this.operator = data.operator;
       this.result = data.result;
     });
-    this.socketService.socket.on("answered", data => {
+    this.socketService.socket.on('answered', data => {
       if (!this.correctAnswered) {
         this.isValid = false;
-        alert("This round has ended! A new one will start in 5 seconds.");
+        alert('This round has ended! A new one will start in 5 seconds.');
       }
       if (data) {
         this.loadNewChallenge();

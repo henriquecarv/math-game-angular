@@ -1,6 +1,5 @@
-/* tslint:disable:no-unused-variable */
+import { TestBed, inject } from '@angular/core/testing';
 
-import { TestBed, async, inject } from '@angular/core/testing';
 import { SocketService } from './socket.service';
 
 describe('SocketService', () => {
@@ -10,7 +9,7 @@ describe('SocketService', () => {
     });
   });
 
-  it('should ...', inject([SocketService], (service: SocketService) => {
+  it('should be created', inject([SocketService], (service: SocketService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { SocketService } from "./socket.service";
-import { environment } from "../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import { SocketService } from './socket.service';
+import { environment } from '../environments/environment';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   score: number;
-  title = "math-game";
+  title = 'math-game';
   connected: number;
   max_users = false;
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.score = 0;
-    this.socketService.socket.on("connected", data => {
+    this.socketService.socket.on('connected', data => {
       this.connected = data;
       if (data <= environment.max_users) {
         this.max_users = true;
