@@ -1,18 +1,20 @@
-<div class="w3-card-4 w3-center" style="width:30%;">
+<div class="container">
+  <div class="card text-center mx-auto">
 
-  <header class="w3-container w3-light-grey">
-    <h1>Is this correct ?</h1>
-  </header>
+    <header class="card-header">
+      <h1>Is this correct ?</h1>
+    </header>
 
-  <div class="w3-container ">
-    <p>
-      {{firstOperand}} {{operator}} {{secondOperand}} = {{result}}
-    </p>
+    <div class="card-body">
+      <p>
+        {{firstOperand}} {{operator}} {{secondOperand}} = {{result}}
+      </p>
+    </div>
+
+    <footer class="card-footer">
+      <button class="btn btn-primary btn-lg" [disabled]="!isValidButton()" (click)="checkAnswer(true)">YES</button>
+      <button class="btn btn-danger btn-lg" [disabled]="!isValidButton()" (click)="checkAnswer(false)">NO</button>
+    </footer>
+
   </div>
-
-  <footer class="w3-container w3-dark-grey">
-    <button class="w3-button w3-green" [disabled]="!isValidButton()" (click)="checkAnswer(true)">YES</button>
-    <button class="w3-button w3-red" [disabled]="!isValidButton()" (click)="checkAnswer(false)">No</button>
-  </footer>
-
 </div>
