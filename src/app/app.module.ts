@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AlertModule } from 'ngx-bootstrap/alert';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { SocketService } from './socket.service';
@@ -9,7 +9,7 @@ import { WaitComponent } from './wait/wait.component';
 
 @NgModule({
   declarations: [AppComponent, RoundComponent, WaitComponent],
-  imports: [BrowserModule, AlertModule.forRoot()],
+  imports: [BrowserModule, BsDropdownModule.forRoot()],
   providers: [SocketService],
   bootstrap: [AppComponent]
 })
