@@ -1,8 +1,3 @@
-/* .score {
-    position: absolute;
-    right: 0;
+.score {
+  float: right;
 }
-
-[hidden] {
-    display: none !important;
-} */

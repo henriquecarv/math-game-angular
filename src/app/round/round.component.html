@@ -1,20 +1,18 @@
-<div class="container">
-  <div class="card text-center mx-auto">
+<div class="card text-center h-100 justify-content-center">
 
-    <header class="card-header">
-      <h1>Is this correct ?</h1>
-    </header>
+  <header class="card-header">
+    <h1>Is this correct ?</h1>
+  </header>
 
-    <div class="card-body">
-      <p>
-        {{firstOperand}} {{operator}} {{secondOperand}} = {{result}}
-      </p>
-    </div>
-
-    <footer class="card-footer">
-      <button class="btn btn-primary btn-lg" [disabled]="!isValidButton()" (click)="checkAnswer(true)">YES</button>
-      <button class="btn btn-danger btn-lg" [disabled]="!isValidButton()" (click)="checkAnswer(false)">NO</button>
-    </footer>
-
+  <div class="card-body">
+    <p>
+      {{firstOperand}} {{operator}} {{secondOperand}} = {{result}}
+    </p>
   </div>
+
+  <footer class="card-footer">
+    <button class="btn btn-primary btn-lg" [disabled]="!isValidButton()" (click)="checkAnswer(true)">YES</button>
+    <button class="btn btn-danger btn-lg" [disabled]="!isValidButton()" (click)="checkAnswer(false)">NO</button>
+  </footer>
+
 </div>
