@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
+    "prestart": "npm run check-modules",
     "start": "./node_modules/@angular/cli/bin/ng serve -o",
-    "build": "./node_modules/@angular/cli/bin/ng build --prod -bh /math-game-angular/",
+    "check-modules": "if [ ! -d 'node_modules/' ]; then npm i; fi",
+    "prebuild": "npm run check-modules",
+    "build":
+      "./node_modules/@angular/cli/bin/ng build --prod -bh /math-game-angular/",
     "publish": "npm run build && ./node_modules/gh-pages/bin/gh-pages -d dist",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "pretest": "npm run check-modules",
+    "test": "./node_modules/@angular/cli/bin/ng test",
+    "prelint": "npm run check-modules",
+    "lint": "./node_modules/@angular/cli/bin/ng lint",
+    "pree2e": "npm run check-modules",
+    "e2e": "./node_modules/@angular/cli/bin/ng e2e"
   },
   "private": true,
   "dependencies": {
