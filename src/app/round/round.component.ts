@@ -44,12 +44,14 @@ export class RoundComponent implements OnInit {
         if (this.playerPoints > 0) {
           this.playerPoints--;
         }
+        this.socketService.socket.emit('new-answer', true);
       }
     } else {
       if (this.hasSameResults()) {
         if (this.playerPoints > 0) {
           this.playerPoints--;
         }
+        this.socketService.socket.emit('new-answer', true);
       } else {
         this.playerPoints++;
         if (!this.correctAnswered) {

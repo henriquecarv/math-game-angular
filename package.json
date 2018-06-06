@@ -2,7 +2,6 @@
   "name": "math-game-angular",
   "version": "1.0.0",
   "scripts": {
-    "ng": "./node_modules/@angular/cli/bin/ng",
     "prestart": "npm run check-modules",
     "start": "./node_modules/@angular/cli/bin/ng serve -o",
     "check-modules": "if [ ! -d 'node_modules/' ]; then npm i; fi",
