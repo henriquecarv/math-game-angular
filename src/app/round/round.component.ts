@@ -42,13 +42,13 @@ export class RoundComponent implements OnInit {
         }
       } else {
         if (this.playerPoints > 0) {
-          this.playerPoints--;
+          this.deductPoints();
         }
       }
     } else {
       if (this.hasSameResults()) {
         if (this.playerPoints > 0) {
-          this.playerPoints--;
+          this.deductPoints();
         }
       } else {
         this.playerPoints++;
@@ -58,6 +58,10 @@ export class RoundComponent implements OnInit {
       }
     }
     this.app.setScore(this.playerPoints);
+  }
+
+  deductPoints(): void {
+    this.playerPoints--;
     this.socketService.socket.emit('new-answer', true);
   }
 
