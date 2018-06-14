@@ -1,4 +1,4 @@
-# [Math Game - Angular](http://henriquecarv.com/math-game-angular)
+# Math Game - Angular
 
 ## TASK
 
